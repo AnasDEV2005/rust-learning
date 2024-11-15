@@ -29,18 +29,15 @@ fn seperate_operation(input: String) -> (String, char, String) {
     let mut num1: String = String::new();
     let mut num2: String = String::new();
 
-
-    // Iterate through each character in the input string
     for i in input.chars() {
         if is_int(i) {
-            // Add number characters to num1 or num2
             if operator == ' ' {
-                num1.push(i); // Add to num1 until we encounter an operator
+                num1.push(i); 
             } else {
-                num2.push(i); // Add to num2 after encountering an operator
+                num2.push(i); 
             }
         } else if "+-/*".contains(i) {
-            operator = i; // Set operator as the first operator found
+            operator = i; 
         }
     }
     (num1, operator, num2)
@@ -53,8 +50,8 @@ fn calculate(operation: (String, char, String)) -> i32 {
 
     // Perform the calculation based on the operator
     match operation.1 {
-        '+' => x + y,
-        '-' => x - y,
+        '+' => x + y, // if operation.1 = '+' return x_ y
+        '-' => x - y, // same idea
         '*' => x * y,
         '/' => {
             if y != 0 {
@@ -64,7 +61,7 @@ fn calculate(operation: (String, char, String)) -> i32 {
                 0 // Return 0 or handle error as needed
             }
         }
-        _ => {
+        _ => { // other error
             println!("Invalid operator.");
             0
         }
